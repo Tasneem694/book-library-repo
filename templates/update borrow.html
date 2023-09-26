@@ -1,0 +1,46 @@
+{%extends 'index.html'%}
+{% block content%}
+
+<style>
+.div {
+    color: black;
+    margin: 150px auto;
+    padding: 30px;
+    width: 450px;
+    height: 450px;
+    background-color: rgb(245, 213, 172);
+}
+label
+{
+  color:black;
+  font-size:25px ;
+  margin: 0;
+  width: fit-content;
+  border-color: #b6090f;
+}
+h4
+{
+ margin: 0;
+  width: fit-content;}
+
+</style>
+
+<div class="div">
+
+<h2>Borrow Book</h2>
+ <br>
+<form method="POST">
+ {%csrf_token%}
+
+ <label>Book Name: </label><h4>{{book_name}}</h4></br>
+ {{update_form.as_p}}
+
+ <span><label>Borrow Date_Time: </label> <h4>{{borrow_dt}}</h4> </span> </br>
+
+<input type="submit" value="Save">
+</form>
+<div style="color:red">
+<h2>{{msg}}</h2>
+</div>
+</div>
+{%endblock%}

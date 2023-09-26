@@ -1,0 +1,81 @@
+{%extends 'index.html'%}
+{% block content%}
+<style>
+.div
+{
+    color:black;
+    margin:150px auto;
+    padding:30px;
+    width:900px;
+    max-height:500px;
+    overflow-y: auto;
+    background-color: rgb(245, 213, 172);
+}
+.table
+{
+
+    text-align:left;
+}
+.search
+{
+    padding:0;
+    text-align:left;
+    margin:0;
+    align-content:center;
+    width:400px;
+}
+.link
+{
+    color:black;
+}
+</style>
+
+<div class="div">
+
+<h2>Books</h2></br>
+
+ <span>
+<form method="POST" class="search">
+    {%csrf_token%}
+    <input type="text"  placeholder="Search by id" name="search" style="height:30px">
+    <input type="submit" value="🔍" style="height:30px" >
+</form>
+     <span>
+         </br>
+            <a class="link" href="{% url 'view_books'%}"> <input  type="submit" value="View all" style="height:30px"></a>
+            <a class="link" href="{% url 'add_book'%}"> <input  type="submit" value="Add" style="height:30px"></a>
+            <a class="link" href="{% url 'borrowed_books'%}"> <input  type="submit" value="Borrowed Books" style="height:30px"></a>
+
+     </span>
+</span>
+
+
+</br></br>
+<div>
+<table class="table" border="2" width="100%" bordercolor="black" >
+<tr class="raw" bgcolor="#f4a460">
+    <th><h4>Book ID</h4></th>
+    <th><h4>Book Name</h4></th>
+    <th><h4>Is Borrowed</h4></th>
+    <th><h4>Borrowed By</h4></th>
+    <th><h4>Actions</h4></th>
+</tr>
+ {%for b in borrowed_books%}
+    <tr>
+       <td>{{b.book_id}}</td>
+       <td>{{b.book_name}}</td>
+       <td>{{b.is_borrowed}}</td>
+       <td>{{b.borrowd_by}}</td>
+
+        <td>
+            <a style="color:blue" href="{% url 'update_book' b.book_id%}">Update</a>
+            <a style="color:blue" href="{% url 'delete_book' b.book_id%}">Delete</a>
+
+        </td>
+    </tr>
+{%endfor%}
+</table>
+</div>
+</div>
+
+{%endblock%}

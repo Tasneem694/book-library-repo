@@ -1,0 +1,108 @@
+{%extends 'index.html'%}
+{% block content%}
+<style>
+.ask
+{
+color:rgb(65, 37, 2);
+}
+.enter
+{
+  color:black;
+}
+.cntainr{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 430px;
+  max-height: 630px;
+  width: 100%;
+  background-color: rgb(245, 202, 147);
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+ .registration{
+  display: block;
+}
+.cntainr .form{
+  padding: 2rem;
+}
+.form .heder{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color:black;
+}
+ .form input{
+   height: 60px;
+   width: 100%;
+   padding: 0 15px;
+   font-size: 17px;
+   margin-bottom: 1.3rem;
+   border: 1px solid #c49355;
+   border-radius: 6px;
+   outline: none;
+   background-color: rgb(245, 202, 147);
+ }
+ .form input:focus{
+   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+ }
+.form a{
+  font-size: 16px;
+  color: rgb(65, 37, 2);
+  text-decoration: none;
+}
+.form a:hover{
+  text-decoration: underline;
+}
+.form input.button{
+  color: #fff;
+  background: rgb(65, 37, 2);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.form input.button:hover{
+  background: rgb(213, 126, 15);
+}
+.signup{
+  font-size: 17px;
+  text-align: center;
+}
+.signup label{
+  color:darkorange;
+  cursor: pointer;
+}
+.signup label:hover{
+  text-decoration: underline;
+}
+</style>
+
+<div class="cntainr">
+   <div class="registration form">
+      <header class="heder">Signup</header>
+      <form method="POST" >
+        {%csrf_token%}
+        <input class="enter" type="text" name="name" placeholder="Enter your name">
+        <input class="enter" type="text" name="email" placeholder="Enter your email">
+        <input class="enter" type="password" name="passwrd" placeholder="Create a password">
+        <input class="enter" type="password" name="confpass" placeholder="Confirm your password">
+        <div style="color:red">
+          {{error0}}
+          {{error1}}
+        </div>
+        <input type="submit" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup ask">Already have an account?
+         <a href="{% url 'login'%}"><label>Login</label></a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+{%endblock%}

@@ -1,0 +1,29 @@
+{%extends 'index.html'%}
+{% block content%}
+
+<style>
+.div {
+    color: black;
+    margin: 150px auto;
+    padding: 30px;
+    width: 350px;
+    height: 350px;
+    background-color: rgb(245, 213, 172);
+}
+</style>
+
+<div class="div">
+
+  <h2>My Profile</h2>
+    <br>
+  <form method="POST">
+      {%csrf_token%}
+      {{update_form.as_p}}
+     <input type="submit" value="UPDATE">
+  </form>
+  <div style="color:red">
+    <h2>{{msg}}</h2>
+  </div>
+
+</div>
+{%endblock%}

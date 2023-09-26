@@ -1,0 +1,97 @@
+{%extends 'index.html'%}
+{% block content%}
+<style>
+label
+{
+  color:black;
+  font-size:25px ;
+  margin: 0;
+  width: fit-content;
+  border-color: #b6090f;
+}
+.data
+{
+  color:darkgray;
+  font-size:25px ;
+  margin: 0;
+  /*width: fit-content;*/
+}
+
+
+.cntainr{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 500px;
+  width: 100%;
+  background-color: rgb(245, 202, 147);
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.cntainr .form{
+  padding: 2rem;
+}
+.form .heder{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color:black;
+}
+ .form input{
+   height: 20px;
+   width: 20px;
+   padding: 0 15px;
+   /*font-size: 17px;*/
+   margin-bottom: 1.3rem;
+   border: 1px solid #c49355;
+   border-radius: 6px;
+   outline: none;
+   background-color: rgb(245, 202, 147);
+ }
+ .form input:focus{
+   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+ }
+
+.form input.button{
+  height: 60px;
+  width: 100%;
+  color: #fff;
+  background: rgb(65, 37, 2);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+/*.form input.button:hover{*/
+/*  background: rgb(213, 126, 15);*/
+/*}*/
+
+</style>
+
+  <div class="cntainr">
+    <div class="form">
+      <header class="heder">Update Book</header>
+      <form method="POST" >
+        {%csrf_token%}
+
+        <label>Book Name:</label>
+        <span class="data">{{book_name}}</span>
+        <label>Borrow Date_Time: </label><br>
+        <label>Return Date_Time: </label> <br>
+        <label>Borrow:</label>
+        <input  type="checkbox" name="borrow" >
+
+        <div style="color:red">
+          {{msg}}
+        </div>
+        <input type="submit" class="button" value="Save"/>
+      </form>
+
+    </div>
+  </div>
+
+{%endblock%}
